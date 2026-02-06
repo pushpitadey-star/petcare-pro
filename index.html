@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetCare Pro | Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/landing.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+
+    <!-- LANDING PAGE -->
+    <div id="landing" class="landing-page">
+        <section class="hero">
+            <h1>🐾 PetCare <span>Pro</span></h1>
+            <p>The most advanced Pet Management System for Professionals.</p>
+            <div class="btn-group">
+                <button class="btn-main" onclick="openUserLogin()">User Login</button>
+                <button class="btn-secondary" onclick="openUserRegister()">Register</button>
+                <button class="btn-main" onclick="openAdminLogin()">Admin Login</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- USER DASHBOARD -->
+    <div id="user-dashboard">
+        <aside class="sidebar">
+            <h2>PetCare User</h2>
+            <a href="#" class="nav-link active">🏠 My Pets</a>
+            <a href="#" class="nav-link">📅 My Appointments</a>
+            <a href="#" class="nav-link">💉 Vaccination Records</a>
+            <a href="#" class="nav-link">⚙️ Profile</a>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-nav">
+                <h1>My Pets Dashboard</h1>
+                <button class="btn-logout" onclick="logoutUser()">Logout</button>
+            </header>
+
+            <div class="stats-grid">
+                <div class="card">
+                    <h3>My Pets</h3>
+                    <div class="value">3</div>
+                </div>
+                <div class="card">
+                    <h3>Upcoming Appointments</h3>
+                    <div class="value">2</div>
+                </div>
+                <div class="card">
+                    <h3>Vaccinations Due</h3>
+                    <div class="value">1</div>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <div style="display:flex;align-items:center;justify-content:space-between">
+                    <h3>My Registered Pets</h3>
+                    <div>
+                        <button class="btn-main" onclick="openAddPetModal()">+ Add Pet</button>
+                        <button class="btn-main" onclick="openAddAppointmentModal()">+ Book Appointment</button>
+                        <button class="btn-main" onclick="openAddVaccinationModal()">+ Add Vaccination</button>
+                    </div>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Pet Name</th>
+                            <th>Type</th>
+                            <th>Breed</th>
+                            <th>Age</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="petsTableBody">
+                        <tr><td colspan="5" style="text-align:center">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-container" style="margin-top: 30px;">
+                <h3>My Appointments</h3>
+                <table id="appointmentsTable">
+                    <thead>
+                        <tr>
+                            <th>Pet Name</th>
+                            <th>Date</th>
+                            <th>Type</th>
+                            <th>Veterinarian</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="6" style="text-align:center">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-container" style="margin-top: 30px;">
+                <h3>Vaccination Records</h3>
+                <table id="vaccinationsTable">
+                    <thead>
+                        <tr>
+                            <th>Pet Name</th>
+                            <th>Vaccine Name</th>
+                            <th>Date Given</th>
+                            <th>Next Due</th>
+                            <th>Veterinarian</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="7" style="text-align:center">Loading...</td></tr>
+                    </tbody>
+                </table>
+        </main>
+    </div>
+
+    <!-- ADMIN DASHBOARD -->
+    <div id="admin-dashboard">
+        <aside class="sidebar">
+            <h2>PetCare Admin</h2>
+            <a href="#" class="nav-link active">🏠 Dashboard</a>
+            <a href="#" class="nav-link">🐶 Registered Pets</a>
+            <a href="#" class="nav-link">💉 Vaccinations</a>
+            <a href="#" class="nav-link">📅 Appointments</a>
+            <a href="#" class="nav-link">⚙️ Settings</a>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-nav">
+                <h1>Overview</h1>
+                <button class="btn-logout" onclick="logoutAdmin()">Logout</button>
+            </header>
+
+            <div class="stats-grid">
+                <div class="card">
+                    <h3>Total Pets</h3>
+                    <div class="value" id="totalPets">1,284</div>
+                </div>
+                <div class="card">
+                    <h3>Active Owners</h3>
+                    <div class="value" id="totalUsers">842</div>
+                </div>
+                <div class="card">
+                    <h3>Pending Checkups</h3>
+                    <div class="value" id="pendingCheckups">12</div>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <h3>Recent Registered Pets</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Pet Name</th>
+                            <th>Category</th>
+                            <th>Owner Name</th>
+                            <th>Registered</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recentPetsTableBody">
+                        <tr><td colspan="4" style="text-align:center">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- USER LOGIN MODAL -->
+    <div class="modal" id="userLoginModal">
+        <div class="modal-content">
+            <h2>User Login</h2>
+            <p>Access your pet's records</p>
+            <form id="userLoginForm">
+                <input type="email" id="userEmail" placeholder="Email (user@example.com)" required>
+                <input type="password" id="userPassword" placeholder="Password (user123)" required>
+                <button class="btn-main" type="submit" style="width: 100%; margin-top: 10px;">Login</button>
+            </form>
+            <p id="userError" class="error-msg">Invalid email or password!</p>
+        </div>
+    </div>
+
+    <!-- USER REGISTER MODAL -->
+    <div class="modal" id="userRegisterModal">
+        <div class="modal-content">
+            <h2>Create Account</h2>
+            <p>Register to manage your pets</p>
+            <form id="userRegisterForm">
+                <label for="registerEmail">Email (Username)</label>
+                <input type="email" id="registerEmail" placeholder="Enter email address" required oninput="checkEmailSuggestions()">
+                <div id="emailSuggestions" style="display:none; border:2px solid #ddd; max-height:200px; overflow-y:auto; margin-top:8px; border-radius:6px; background-color:#fff; box-shadow:0 4px 6px rgba(0,0,0,0.1); z-index:1000;">
+                    <ul id="suggestionsList" style="list-style:none; padding:8px; margin:0;"></ul>
+                </div>
+                <input type="password" id="registerPassword" placeholder="Password" required>
+                <input type="password" id="registerPasswordConfirm" placeholder="Confirm Password" required>
+                <input type="text" id="registerFirstName" placeholder="First name">
+                <input type="text" id="registerLastName" placeholder="Last name">
+                <button class="btn-main" type="submit" style="width:100%; margin-top:10px;">Register</button>
+            </form>
+            <button class="btn-secondary" onclick="closeUserRegister()" style="margin-top:8px;">Cancel</button>
+            <p id="registerError" class="error-msg"></p>
+        </div>
+    </div>
+
+    <!-- ADMIN LOGIN MODAL -->
+    <div class="modal" id="adminLoginModal">
+        <div class="modal-content">
+            <h2>Admin Login</h2>
+            <p>Manage the system</p>
+            <form id="adminLoginForm">
+                <input type="text" id="adminUser" placeholder="Username (admin)" required>
+                <input type="password" id="adminPassword" placeholder="Password (admin123)" required>
+                <button class="btn-main" type="submit" style="width: 100%; margin-top: 10px;">Login</button>
+            </form>
+            <p id="adminError" class="error-msg">Invalid credentials!</p>
+        </div>
+    </div>
+
+    <!-- ADD PET MODAL -->
+    <div class="modal" id="addPetModal">
+        <div class="modal-content">
+            <h2>Add New Pet</h2>
+            <form id="addPetForm">
+                <input type="text" id="petName" placeholder="Pet Name" required>
+                <input type="text" id="petSpecies" placeholder="Species (e.g., Dog)" required>
+                <input type="text" id="petBreed" placeholder="Breed">
+                <input type="number" id="petAge" placeholder="Age (years)">
+                <select id="petGender">
+                    <option value="">Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+                <button class="btn-main" type="submit" style="width:100%; margin-top:10px;">Add Pet</button>
+            </form>
+            <button class="btn-secondary" onclick="closeAddPetModal()" style="margin-top:8px;">Cancel</button>
+        </div>
+    </div>
+
+    <!-- ADD APPOINTMENT MODAL -->
+    <div class="modal" id="addAppointmentModal">
+        <div class="modal-content">
+            <h2>Book Appointment</h2>
+            <form id="addAppointmentForm">
+                <label for="appointPetSelect">Select Pet *</label>
+                <select id="appointPetSelect" required>
+                    <option value="">-- Loading pets --</option>
+                </select>
+                <input type="datetime-local" id="appointDate" placeholder="Date & Time" required>
+                <input type="text" id="appointType" placeholder="Reason / Type (e.g., Checkup)">
+                <input type="text" id="appointVet" placeholder="Preferred Veterinarian">
+                <button class="btn-main" type="submit" style="width:100%; margin-top:10px;">Book</button>
+            </form>
+            <button class="btn-secondary" onclick="closeAddAppointmentModal()" style="margin-top:8px;">Cancel</button>
+        </div>
+    </div>
+
+    <!-- ADD VACCINATION MODAL -->
+    <div class="modal" id="addVaccinationModal">
+        <div class="modal-content">
+            <h2>Add Vaccination</h2>
+            <form id="addVaccinationForm">
+                <label for="vacPetSelect">Select Pet *</label>
+                <select id="vacPetSelect" required>
+                    <option value="">-- Loading pets --</option>
+                </select>
+                <input type="text" id="vaccineName" placeholder="Vaccine Name (e.g., Rabies)" required>
+                <label>Date Given</label>
+                <input type="date" id="vacDate" required>
+                <label>Next Due Date (optional)</label>
+                <input type="date" id="vacNextDue">
+                <button class="btn-main" type="submit" style="width:100%; margin-top:10px;">Add Vaccination</button>
+            </form>
+            <button class="btn-secondary" onclick="closeAddVaccinationModal()" style="margin-top:8px;">Cancel</button>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="js/main.js"></script>
+    <script src="js/auth-updated.js"></script>
+
+</body>
+</html>
